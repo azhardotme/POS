@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\UnitController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -62,3 +63,11 @@ Route::get('/all-category', [CategoryController::class, 'index'])->name('view-ca
 Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
 Route::put('/update-category/{id}', [CategoryController::class, 'update'])->name('update-category');
 Route::delete('/delete-category/{id}', [CategoryController::class, 'destroy'])->name('delete-category');
+
+//Product
+Route::get('/add-product', [ProductController::class, 'create'])->name('create-product');
+Route::post('/add-product', [ProductController::class, 'store'])->name('store-product');
+Route::get('/all-product', [ProductController::class, 'index'])->name('view-product');
+Route::get('/edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
+Route::put('/update-product/{id}', [ProductController::class, 'update'])->name('update-product');
+Route::delete('/delete-product/{id}', [ProductController::class, 'destroy'])->name('delete-product');
