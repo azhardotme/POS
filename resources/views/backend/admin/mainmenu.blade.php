@@ -20,6 +20,22 @@
                 </ul>
             </li>
 
+            <li>
+                <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Unit</span></a>
+                <ul>
+                    <li><a class="submenu" href="{{url('/add-unit')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Unit</span></a></li>
+                    <li><a class="submenu" href="{{url('/all-unit')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">All Unit</span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Category</span></a>
+                <ul>
+                    <li><a class="submenu" href="{{url('/add-category')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Category</span></a></li>
+                    <li><a class="submenu" href="{{url('/all-category')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">All Category</span></a></li>
+                </ul>
+            </li>
+
         </ul>
     </div>
 </div>

@@ -5,16 +5,8 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\SuperAdminController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\CustomerController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\Backend\UnitController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,3 +46,11 @@ Route::get('/all-customer', [CustomerController::class, 'index'])->name('view.cu
 Route::get('/edit-customer/{id}', [CustomerController::class, 'edit'])->name('edit.customer');
 Route::put('/update-customer/{id}', [CustomerController::class, 'update'])->name('update.customer');
 Route::delete('/delete-customer/{id}', [CustomerController::class, 'destroy'])->name('delete.customer');
+
+//Unit
+Route::get('/add-unit', [UnitController::class, 'create'])->name('create.unit');
+Route::post('/add-unit', [UnitController::class, 'store'])->name('store.unit');
+Route::get('/all-unit', [UnitController::class, 'index'])->name('view.unit');
+Route::get('/edit-unit/{id}', [UnitController::class, 'edit'])->name('edit.unit');
+Route::put('/update-unit/{id}', [UnitController::class, 'update'])->name('update.unit');
+Route::delete('/delete-unit/{id}', [UnitController::class, 'destroy'])->name('delete.unit');
