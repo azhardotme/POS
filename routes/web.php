@@ -6,7 +6,7 @@ use App\Http\Controllers\Backend\SuperAdminController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\UnitController;
-
+use App\Http\Controllers\Backend\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,3 +54,11 @@ Route::get('/all-unit', [UnitController::class, 'index'])->name('view.unit');
 Route::get('/edit-unit/{id}', [UnitController::class, 'edit'])->name('edit.unit');
 Route::put('/update-unit/{id}', [UnitController::class, 'update'])->name('update.unit');
 Route::delete('/delete-unit/{id}', [UnitController::class, 'destroy'])->name('delete.unit');
+
+//Category
+Route::get('/add-category', [CategoryController::class, 'create'])->name('create-category');
+Route::post('/add-category', [CategoryController::class, 'store'])->name('store-category');
+Route::get('/all-category', [CategoryController::class, 'index'])->name('view-category');
+Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
+Route::put('/update-category/{id}', [CategoryController::class, 'update'])->name('update-category');
+Route::delete('/delete-category/{id}', [CategoryController::class, 'destroy'])->name('delete-category');
