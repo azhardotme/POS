@@ -43,7 +43,13 @@
                     <li><a class="submenu" href="{{url('/all-product')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">All Product</span></a></li>
                 </ul>
             </li>
-
+            <li>
+                <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Purchase</span></a>
+                <ul>
+                    <li><a class="submenu" href="{{url('/add-purchase')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Purchase</span></a></li>
+                    <li><a class="submenu" href="{{url('/all-purchase')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">All Purchase</span></a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

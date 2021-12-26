@@ -8,6 +8,8 @@ use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\UnitController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\PurchaseController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,3 +73,11 @@ Route::get('/all-product', [ProductController::class, 'index'])->name('view-prod
 Route::get('/edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
 Route::put('/update-product/{id}', [ProductController::class, 'update'])->name('update-product');
 Route::delete('/delete-product/{id}', [ProductController::class, 'destroy'])->name('delete-product');
+
+//Purchase
+Route::get('/add-purchase', [PurchaseController::class, 'create'])->name('create-purchase');
+Route::post('/add-purchase', [PurchaseController::class, 'store'])->name('store-purchase');
+Route::get('/all-purchase', [PurchaseController::class, 'index'])->name('view-purchase');
+Route::get('/edit-purchase/{id}', [PurchaseController::class, 'edit'])->name('edit-purchase');
+Route::put('/update-purchase/{id}', [PurchaseController::class, 'update'])->name('update-purchase');
+Route::delete('/delete-purchase/{id}', [PurchaseController::class, 'destroy'])->name('delete-purchase');
