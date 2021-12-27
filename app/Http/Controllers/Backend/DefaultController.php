@@ -3,25 +3,26 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Purchase;
-use App\Models\Supplier;
-use App\Models\Product;
-use App\Models\Unit;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Supplier;
+use App\Models\Unit;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 
-class PurchaseController extends Controller
+class DefaultController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getCategory(Request $request)
     {
-        $purchases = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
-        return view('backend.unit.index', compact('purchases'));
+        $supplier_id = $request->supplier_id;
+        $allCategory = Product::with(['category'])->select('category_id')->where('supplier_id', $supplier_id)->groupBy('category_id')->get();
+        return response()->json($allCategory);
     }
 
     /**
@@ -29,12 +30,11 @@ class PurchaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getProduct(Request $request)
     {
-        $suppliers = Supplier::all();
-        $categories = Category::all();
-        $units = Unit::all();
-        return view('backend.purchase.create', compact('suppliers', 'categories', 'units'));
+        $category_id = $request->category_id;
+        $allProduct = Product::where('category_id', $category_id)->get();
+        return response()->json($allProduct);
     }
 
     /**
@@ -45,16 +45,7 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'name' => 'required',
-
-        ]);
-
-        $purchase  = new Purchase;
-        $purchase->name = $request->name;
-        $purchase->save();
-
-        return redirect()->back()->with('message', 'Purchase  Added Successfully!');
+        //
     }
 
     /**
@@ -76,8 +67,7 @@ class PurchaseController extends Controller
      */
     public function edit($id)
     {
-        $purchase = Purchase::find($id);
-        return view('backend.purchase.edit', compact('purchase'));
+        //
     }
 
     /**
@@ -89,12 +79,7 @@ class PurchaseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $purchase = purchase::find($id);
-
-        $purchase->name = $request->name;
-        $purchase->update();
-
-        return redirect('/all-purchase')->with('message', 'Purchase Updated Successfully!');
+        //
     }
 
     /**
@@ -105,8 +90,6 @@ class PurchaseController extends Controller
      */
     public function destroy($id)
     {
-        $purchase = Purchase::find($id);
-        $purchase->delete();
-        return redirect()->back()->with('message', 'Purchase Deleted Successfully!');
+        //
     }
 }

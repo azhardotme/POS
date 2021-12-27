@@ -9,7 +9,7 @@ use App\Http\Controllers\Backend\UnitController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\PurchaseController;
-
+use App\Http\Controllers\Backend\DefaultController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -81,3 +81,7 @@ Route::get('/all-purchase', [PurchaseController::class, 'index'])->name('view-pu
 Route::get('/edit-purchase/{id}', [PurchaseController::class, 'edit'])->name('edit-purchase');
 Route::put('/update-purchase/{id}', [PurchaseController::class, 'update'])->name('update-purchase');
 Route::delete('/delete-purchase/{id}', [PurchaseController::class, 'destroy'])->name('delete-purchase');
+//Route::post('/purchase-store', [PurchaseController::class, 'purchaseStore'])->name('purchase-store');
+//Default
+Route::get('/get-category', [DefaultController::class, 'getCategory'])->name('get-category');
+Route::get('/get-product', [DefaultController::class, 'getProduct'])->name('get-product');

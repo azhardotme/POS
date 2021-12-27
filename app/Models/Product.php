@@ -31,4 +31,9 @@ class Product extends Model
     {
         return $this->belongsTo(Unit::class, 'unit_id');
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }
